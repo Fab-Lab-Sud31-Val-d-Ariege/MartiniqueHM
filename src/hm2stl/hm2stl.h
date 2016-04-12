@@ -1,0 +1,14 @@
+//
+// $Id$
+#ifndef hm2stl_INCLUDED_
+#define hm2stl_INCLUDED_
+
+#include <string>
+#include <assabib/framic_defs.h>
+#include <fstream>
+#include <cmath>
+#include <assabib/csvline.h>
+#include <assabib/FileName.h>
+#include <heightmap/hmap.h>
+
+#endif

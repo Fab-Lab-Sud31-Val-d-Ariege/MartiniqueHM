@@ -1,0 +1,16 @@
+package "strmasc2bin"
+version "0.1.0"
+purpose "Read an ascii file of SRTM data and write a binary version. If no
+output name is given, will write foo.bin from foo.asc.
+Jarvis A., H.I. Reuter, A.  Nelson, E. Guevara, 2008, Hole-filled  seamless
+SRTM data V4, International  Centre for Tropical  Agriculture (CIAT), available
+from http://srtm.csi.cgiar.org."
+
+# [default]
+option "quiet"      q   "suppress output." flag off
+option "verbose"    v   "add some more output" flag off
+
+# [Files]
+option "output"     o   "name of the output file, no extensions"  string no
+
+# --unamed-opts  : "filename : the file to read";

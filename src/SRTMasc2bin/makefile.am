@@ -1,0 +1,25 @@
+# Copyright (C) 2016 Francis Micheli <fmicheli@teaser.fr>
+#
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+AUTOMAKE_OPTIONS=gnu
+AM_CPPFLAGS=-I$(top_builddir) -I$(top_srcdir)/src
+EXTRA_DIST=strmasc2bin.ggo
+
+
+bin_PROGRAMS=strmasc2bin
+strmasc2bin_SOURCES=cmdline.h strmasc2bin.cpp strmasc2bin.h cmdline.c
+strmasc2bin_CFLAGS=-Wno-unused-but-set-variable
+strmasc2bin_LDADD=-lgslcblas -lgsl -lassabib
+
+
+cmdline.h: strmasc2bin.ggo
+	gengetopt --input=strmasc2bin.ggo --unamed-opts
+
+cmdline.c: strmasc2bin.ggo
+	gengetopt --input=strmasc2bin.ggo --unamed-opts

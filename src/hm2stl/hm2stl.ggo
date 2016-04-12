@@ -1,0 +1,25 @@
+package "xtractFasc"
+version "0.1.0"
+purpose "Read an ascii file of elevation  data and extract a rectangle of data.
+Jarvis A., H.I. Reuter, A.  Nelson, E. Guevara, 2008, Hole-filled  seamless SRTM
+data V4, International  Centre for Tropical  Agriculture (CIAT), available  from
+http://srtm.csi.cgiar.org.
+Will write an ASC file (matrix) and an XYZ file (3 cols, space separated)"
+
+# [default]
+option "quiet"      q   "suppress output." flag off
+option "verbose"    v   "add some more output" flag off
+
+# [Files]
+option "output"     o   "name of the output file, no extensions"  string default="region" no
+# option "binary"     b   "write values in raw binary format" flag off
+# option "noheader"   H   "suppress header with data parameters, ASCII only" flag off
+option "zfactor"    Z   "multiply z value by this number" double default="1.0" no
+
+# [Process]
+option "wlimit"     w   "west limit, degree."  double yes
+option "elimit"     e   "east limit, degree."  double yes
+option "nlimit"		n	"north limit, degree." double yes
+option "slimit"		s	"south limit, degree." double yes
+
+# --unamed-opts  : "filename : the file to read";

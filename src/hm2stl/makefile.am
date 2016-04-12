@@ -1,0 +1,26 @@
+# Copyright (C) 2003-2007 ONERA Francis Micheli<micheli@onera.fr>
+#  
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without 
+# modifications, as long as this notice is preserved.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+AUTOMAKE_OPTIONS = gnu
+AM_CPPFLAGS= -I$(top_builddir) -I$(top_srcdir)/src -I..
+
+EXTRA_DIST = 001AT.dat 010AT1.dat 010AT2.dat
+ 
+check_PROGRAMS = tstfvector
+
+tstfvector_SOURCES = tstfvector.cpp
+tstfvector_LDADD = $(top_builddir)/src/FSample/libFSample.la \
+    $(top_builddir)/src/FVector/libFVector.la \
+    $(top_builddir)/src/SDate/libSDate.la \
+    $(top_builddir)/src/AsciiData/libAsciiData.la \
+    $(top_builddir)/src/Common/libCommon.la \
+    $(top_builddir)/src/FileName/libFileName.la \
+    $(top_builddir)/src/Random/libRandom.la -lgsl -lgslcblas -lm 
+
+#test_csvline_LDADD = $(top_builddir)/src/lib_Data/libData.la -lassabib -lefence
