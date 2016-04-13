@@ -1,0 +1,25 @@
+# Copyright (C) 2016 Francis Micheli <fmicheli@teaser.fr>
+#  
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without 
+# modifications, as long as this notice is preserved.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+AUTOMAKE_OPTIONS = gnu
+
+header-links: remove-links
+	HEADERLIST="$(top_srcdir)/*.h $(top_srcdir)/src/*.h \
+     $(top_srcdir)/src/lib_*/*.h $(top_srcdir)/src/lib_*/*.inl"; \
+	for h in $$HEADERLIST; do \
+	  BASENAME=`basename $$h`; \
+	  $(LN_S) $$h $$BASENAME; \
+	done
+
+remove-links: 
+	rm -f *.h *.inl
+
+all:  all-am header-links
+clean: clean-am remove-links
+distclean: distclean-am remove-links
