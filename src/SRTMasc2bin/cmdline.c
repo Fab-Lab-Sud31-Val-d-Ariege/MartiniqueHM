@@ -25,7 +25,7 @@
 
 #include "cmdline.h"
 
-const char *gengetopt_args_info_purpose = "Read an ascii file of SRTM data and write a binary version. In no output\nname is given, will write foo.bin from foo.asc.\nJarvis A., H.I. Reuter, A.  Nelson, E. Guevara, 2008, Hole-filled  seamless\nSRTM\ndata V4, International  Centre for Tropical  Agriculture (CIAT), available\nfrom\nhttp://srtm.csi.cgiar.org.";
+const char *gengetopt_args_info_purpose = "Read an ascii file of SRTM data and write a binary version. If no\noutput name is given, will write foo.bin from foo.asc.\nJarvis A., H.I. Reuter, A.  Nelson, E. Guevara, 2008, Hole-filled  seamless\nSRTM data V4, International  Centre for Tropical  Agriculture (CIAT), available\nfrom http://srtm.csi.cgiar.org.";
 
 const char *gengetopt_args_info_usage = "Usage: strmasc2bin [OPTIONS]... [FILES]...";
 

@@ -15,11 +15,11 @@
 @SET_MAKE@
 
 # Copyright (C) 2016 Francis Micheli <fmicheli@teaser.fr>
-#  
+#
 # This file is free software; as a special exception the author gives
-# unlimited permission to copy and/or distribute it, with or without 
+# unlimited permission to copy and/or distribute it, with or without
 # modifications, as long as this notice is preserved.
-# 
+#
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
@@ -347,11 +347,11 @@ top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = gnu
 # remember : need to finish the library before making applications
 # so the dot in the middle of the directory list
-SUBDIRS = heightmap . SRTMasc2bin
+SUBDIRS = martiniquehm . SRTMasc2bin lib_geom
 pkginclude_HEADERS = version.h
 
 # SUBLIBS = lib_Theodolite/libTheodolite.la
-# 
+#
 # lib_LTLIBRARIES = libetalvlf.la
 # libetalvlf_la_SOURCES = version.c
 # libetalvlf_la_LIBADD = $(SUBLIBS)

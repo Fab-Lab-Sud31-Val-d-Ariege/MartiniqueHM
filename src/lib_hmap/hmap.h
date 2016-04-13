@@ -1,14 +1,14 @@
 //
 // $Id$
-#ifndef HMap_INCLUDED_
-#define HMap_INCLUDED_
+#ifndef HMAP_INCLUDED_
+#define HMAP_INCLUDED_
 
 #include <assabib/framic_defs.h>
 #include <string>
 #include <vector>
 #include <valarray>
 
-namespace heightmap {
+namespace MartiniqueHM {
 
 //*********************************************************
 //
@@ -17,10 +17,9 @@ namespace heightmap {
 //*********************************************************
 
 //! This class hold an height map based on a matrix
-
 /*! Typically the values comes from Nasa's SRTM measurements. They
- * are on a regular grid with sqare aspect ratio. The square size is typically
- * 250m or 90m.
+ * are on a regular grid with sqare aspect ratio. The square size
+ * is typically 250m or 90m.
  */
 
 class HMap
@@ -63,20 +62,26 @@ class HMap
     //@{
     //! Assign a scalar to each value
     HMap& operator=(const double& val);
-    //! Produit en place d'un HMap par un scalaire.
+    //! in place scaling (Z co-ordinate only)
     void operator*= (double scalar);
     //@}
+
+	//! \name input
+	//@{
+	//! read data from a binary version of SRTM data
+	bool FillFrom(const FileName& fn, );
+	//@}
 
     // ===============================================================
     //! \name I/O, display and storage (file HMap_IO.cpp)
     //@{
+	//! read the name
+	string name() const;
 	//! assign the name
-	void NameIt(const string&);
-
+	string& name();
 	//! Standard info function.
     void info(ostream& s=cout, bool debug=false) const;
-
-// 	//! write data in XML format
+// 	//! write data in XML format ; parameters only, not the map!
 //     void write(ostream& out) const;
 //     //! write header of XSIL format
 //     void writeXML_Head(ostream& out) const;
@@ -84,11 +89,6 @@ class HMap
 //     void writeXML_Data(ostream& out) const;
 //     //! write footer of XSIL format
 //     void writeXML_Foot(ostream& out) const;
-
-	//! write in STL format
-	void writeSTL(ostream& oud, bool ASCII=false);
-// 	//! write in png format
-// 	void writePNG(ostream& oud);
     //@}
 
   private :
@@ -112,17 +112,8 @@ class HMap
 	//! border of the map
 	vector< pair<size_t, size_t> > m_border;
 
-// 	//! initialisation des attributs
-//     void ClearMembers();
-//     //! allocation des tableaux
-//     void AllocTables();
-// 	//! Exécute la copie des attributs
-// 	void DoCopy(const HMap &ROp);
-
 	//! find the border of the valid data, from outside the map only
 	void FindBorder();
-// 	//! write a triangle in stl file, with its normal
-// 	void WriteTriangle???
 };
 
 #include "hmap.inl"

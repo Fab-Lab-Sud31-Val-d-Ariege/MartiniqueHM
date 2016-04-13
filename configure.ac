@@ -62,9 +62,9 @@ AC_CHECK_HEADER_STDBOOL
 AC_C_INLINE
 AC_TYPE_SIZE_T
 
-# Flags : CPPFLAGS denotes pre-processor flags, such as -I options. 
+# Flags : CPPFLAGS denotes pre-processor flags, such as -I options.
 # CFLAGS denotes flags for the C compiler.
-# CXXFLAGS denotes flags for the C++ compiler. 
+# CXXFLAGS denotes flags for the C++ compiler.
 CFLAGS+=" -g -Wall"
 CXXFLAGS+=" -std=c++11 -g -Wall -Wold-style-cast"
 
@@ -78,7 +78,9 @@ AC_CONFIG_FILES([config/makefile
                  makefile
                  src/makefile
 				 src/version.h
-				 src/heightmap/makefile
+				 src/martiniquehm/makefile
+				 src/lib_geom/makefile
+				 src/lib_geom/Test/makefile
 				 src/SRTMasc2bin/makefile
 				 ])
 AC_OUTPUT
