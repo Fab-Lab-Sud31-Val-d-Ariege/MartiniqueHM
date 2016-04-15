@@ -1,4 +1,4 @@
-# Copyright (C) 2003-2014 ONERA Francis Micheli<micheli@onera.fr>
+# Copyright (C) 2003-2007 ONERA Francis Micheli<micheli@onera.fr>
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -8,16 +8,10 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 AUTOMAKE_OPTIONS = gnu
-AM_CPPFLAGS= -I$(top_builddir) -I$(top_srcdir)/src -I..
+SUBDIRS= . Test
+AM_CPPFLAGS= -I$(top_builddir) -I$(top_srcdir)/src
 
-EXTRA_DIST =
+pkginclude_HEADERS = stl_triangle.h stl_triangle.inl stl_writer.h stl_writer.inl
 
-check_PROGRAMS = tstpointsr3 tstvector3
-
-tstpointsr3_SOURCES = tstpointsr3.cpp
-tstpointsr3_LDADD = $(top_builddir)/src/lib_geom/libgeom.la \
-    -lgsl -lgslcblas -lm
-
-tstvector3_SOURCES = tstvector3.cpp
-tstvector3_LDADD = $(top_builddir)/src/lib_geom/libgeom.la \
-    -lgsl -lgslcblas -lm
+noinst_LTLIBRARIES = libstl.la
+libstl_la_SOURCES = stl_triangle.cpp stl_writer.cpp

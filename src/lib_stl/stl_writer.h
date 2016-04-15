@@ -3,9 +3,13 @@
 #ifndef MHM_STLWriter_INCLUDED_
 #define MHM_STLWriter_INCLUDED_
 
+#include <cstring>
+#include <cstdint>
 #include <string>
-#include <framic_defs.h>
+#include <fstream>
+#include <assabib/framic_defs.h>
 #include <assabib/FileName.h>
+#include <martiniquehm/stl_triangle.h>
 
 namespace MartiniqueHM {
 
@@ -14,12 +18,9 @@ namespace MartiniqueHM {
 //           CLASS STLWriter :
 //
 //*********************************************************
-
 //! This class writes triangles in STL format, either ascii or binary
-
 /*!
 */
-
 class STLWriter
 {
   public :
@@ -28,7 +29,7 @@ class STLWriter
     //! void construct
     STLWriter();
     //! Ordinary contructor
-    STLWriter(const string& filename, bool ascii=false);
+    STLWriter(const string& filename);
     //! Dtor
     virtual ~STLWriter();
     //@}
@@ -36,43 +37,83 @@ class STLWriter
     //! \name Constructors and destructors
     //@{
 	//! return the file name
-	string  FileName() const;
+	assabib::FileName  FileName() const;
 	//! set the file name
-	string& FileName();
-	//! read the binary flag
-	bool  BinaryFlag() const;
-	//! set "binary" flag
-	bool& BinaryFlag();
+	assabib::FileName& FileName();
     //@}
 
-    //! \name I/O, display and storage (file STLWriter_IO.cpp)
+    //! \name I/O, display and storage
     //@{
     //! Standard info function.
     void info(ostream& s=cout, bool debug=false) const;
 	//! stl header
-	void write_header() const;
+	virtual void write_header(size_t nbt) const =0;
     //! stl data
-    void write_data(const STLTriangle& tr) const;
+	virtual void write_data(const STLTriangle& tr) const=0;
 	//!  stl trailer, if any
-	void write_trailer() const;
-
+	virtual void write_trailer() const =0;
     //@}
 
-  private :
+  protected :
 	//! file name of the output
 	assabib::FileName m_fn;
-	//! flag, binary output
-  	bool m_binary;
 	//! stream
-	ofstream m_oud;
+	mutable std::ofstream m_oud;
 };
 
-#include "STLWriter.inl"
-#include "STLWriter.cpp"
-#include "STLWriter_IO.cpp"
+class STLWriterAscii : public STLWriter
+{
+public :
+	//! \name Constructors and destructors
+	//@{
+	//! void construct
+	STLWriterAscii();
+	//! Ordinary contructor
+	STLWriterAscii(const string& filename);
+	//! Dtor
+	virtual ~STLWriterAscii();
+	//@}
 
-#include "STLWriter_fct.h"
-#include "STLWriter_fct.cpp"
+	//! \name I/O, display and storage
+	//@{
+	//! Standard info function.
+	void info(ostream& s=cout, bool debug=false) const;
+	//! stl header
+	void write_header(size_t nbt) const;
+	//! stl data
+	void write_data(const STLTriangle& tr) const;
+	//!  stl trailer, if any
+	void write_trailer() const;
+	//@}
+};
+
+class STLWriterBinary : public STLWriter
+{
+public :
+	//! \name Constructors and destructors
+	//@{
+	//! void construct
+	STLWriterBinary();
+	//! Ordinary contructor
+	STLWriterBinary(const string& filename);
+	//! Dtor
+	virtual ~STLWriterBinary();
+	//@}
+
+	//! \name I/O, display and storage
+	//@{
+	//! Standard info function.
+	void info(ostream& s=cout, bool debug=false) const;
+	//! stl header
+	void write_header(size_t nbt) const;
+	//! stl data
+	void write_data(const STLTriangle& tr) const;
+	//!  stl trailer, if any
+	void write_trailer() const;
+	//@}
+};
+
+#include "stl_writer.inl"
 
 } // namespace
 

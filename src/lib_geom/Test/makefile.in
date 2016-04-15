@@ -87,7 +87,7 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-check_PROGRAMS = tstpointsr3$(EXEEXT)
+check_PROGRAMS = tstpointsr3$(EXEEXT) tstvector3$(EXEEXT)
 subdir = src/lib_geom/Test
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
@@ -108,6 +108,9 @@ AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+am_tstvector3_OBJECTS = tstvector3.$(OBJEXT)
+tstvector3_OBJECTS = $(am_tstvector3_OBJECTS)
+tstvector3_DEPENDENCIES = $(top_builddir)/src/lib_geom/libgeom.la
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -142,8 +145,8 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(tstpointsr3_SOURCES)
-DIST_SOURCES = $(tstpointsr3_SOURCES)
+SOURCES = $(tstpointsr3_SOURCES) $(tstvector3_SOURCES)
+DIST_SOURCES = $(tstpointsr3_SOURCES) $(tstvector3_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -308,6 +311,10 @@ tstpointsr3_SOURCES = tstpointsr3.cpp
 tstpointsr3_LDADD = $(top_builddir)/src/lib_geom/libgeom.la \
     -lgsl -lgslcblas -lm
 
+tstvector3_SOURCES = tstvector3.cpp
+tstvector3_LDADD = $(top_builddir)/src/lib_geom/libgeom.la \
+    -lgsl -lgslcblas -lm
+
 all: all-am
 
 .SUFFIXES:
@@ -355,6 +362,10 @@ tstpointsr3$(EXEEXT): $(tstpointsr3_OBJECTS) $(tstpointsr3_DEPENDENCIES) $(EXTRA
 	@rm -f tstpointsr3$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(tstpointsr3_OBJECTS) $(tstpointsr3_LDADD) $(LIBS)
 
+tstvector3$(EXEEXT): $(tstvector3_OBJECTS) $(tstvector3_DEPENDENCIES) $(EXTRA_tstvector3_DEPENDENCIES) 
+	@rm -f tstvector3$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(tstvector3_OBJECTS) $(tstvector3_LDADD) $(LIBS)
+
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 
@@ -362,6 +373,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tstpointsr3.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tstvector3.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

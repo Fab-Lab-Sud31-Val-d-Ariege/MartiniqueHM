@@ -4,22 +4,23 @@
 #define STLTRIANGLE_INCLUDED_
 
 #include <string>
+#include <cstdint>
 #include <martiniquehm/pointr3.h>
+#include <martiniquehm/vector3.h>
 
 namespace MartiniqueHM {
 
 //*********************************************************
 //
-//           CLASS STLTriangle<T> :
+//           CLASS STLTriangle
 //
 //*********************************************************
-
-//! Brief
-
-/*! Long
+//! This is a triangle in R3, with its normal
+/*! The write functions follows stl format in ascii or binary
+ * No check for degenerated triangles.
 */
 
-class STLTriangle : public NamedObject
+class STLTriangle
 {
   public :
     //! \name Constructors and destructors
@@ -49,7 +50,7 @@ class STLTriangle : public NamedObject
 	//! Point C, W
 	PointR3& C();
 	//! the normal
-	PointR3 N() const;
+	VectoR3 N() const;
 	//! reverse the normal
 	void Reverse();
 	//! set Z for all points
@@ -60,7 +61,7 @@ class STLTriangle : public NamedObject
     //@{
     //! Standard info function.
 	void info(std::ostream& s= std::cout, bool debug=false) const;
-    //! Serialisation try, ascii output
+    //! Ascii output
 	friend std::ostream& operator<< (std::ostream& s, const STLTriangle& fs);
     //! write data in binary format
     void write(std::ostream& s) const;
@@ -74,13 +75,12 @@ class STLTriangle : public NamedObject
 	//! Point C
 	PointR3 m_C;
 	//! Normal vector
-	PointR3 m_normal;
+	mutable VectoR3 m_N;
 	//! flag, is the normal valid ?
-	bool m_normalvalid;
+	mutable bool m_normalvalid;
 
 	//! compute normal from A, B & C
-	void ComputeNormal();
-
+	void ComputeNormal() const;
 };
 
 #include "stl_triangle.inl"

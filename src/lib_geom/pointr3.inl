@@ -3,7 +3,7 @@
 
     // void construct
     inline
-    PointR3::PointR3(double x, double y, double z)
+    PointR3::PointR3(float x, float y, float z)
 	{
 		m_c[0]=x;
 		m_c[1]=y;
@@ -37,42 +37,42 @@
 	}
 
     // first component, RW
-	inline double&
+	inline float&
 	PointR3::X()
 	{
 		return m_c[0];
 	}
 
     // second component, RW
-	inline double&
+	inline float&
 	PointR3::Y()
 	{
 		return m_c[1];
 	}
 
 	// third component, RW
-	inline double&
+	inline float&
 	PointR3::Z()
 	{
 		return m_c[2];
 	}
 
 	// first component, RO
-	inline double
+	inline float
 	PointR3::X() const
 	{
 		return m_c[0];
 	}
 
 	// second component, RO
-	inline double
+	inline float
 	PointR3::Y() const
 	{
 		return m_c[1];
 	}
 
 	// third component, RO
-	inline double
+	inline float
 	PointR3::Z() const
 	{
 		return m_c[2];
@@ -80,7 +80,7 @@
 
 	// Serialisation try, binary output
 	inline void
-	PointR3::write(std::ostream& s)
+	PointR3::write(std::ostream& s) const
 	{
-		s.write(reinterpret_cast<char*>(m_c), 3*sizeof(double));
+		s.write(reinterpret_cast<const char*>(m_c), 3*sizeof(float));
 	}

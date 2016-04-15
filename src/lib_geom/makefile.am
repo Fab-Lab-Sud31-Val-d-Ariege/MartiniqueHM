@@ -11,7 +11,7 @@ AUTOMAKE_OPTIONS = gnu
 SUBDIRS= . Test
 AM_CPPFLAGS= -I$(top_builddir) -I$(top_srcdir)/src
 
-pkginclude_HEADERS = pointr3.h pointr3.inl
+pkginclude_HEADERS = pointr3.h pointr3.inl vector3.h vector3.inl
 
 noinst_LTLIBRARIES = libgeom.la
-libgeom_la_SOURCES = pointr3.cpp
+libgeom_la_SOURCES = pointr3.cpp vector3.cpp

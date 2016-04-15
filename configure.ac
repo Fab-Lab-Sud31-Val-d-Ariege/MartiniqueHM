@@ -81,6 +81,8 @@ AC_CONFIG_FILES([config/makefile
 				 src/martiniquehm/makefile
 				 src/lib_geom/makefile
 				 src/lib_geom/Test/makefile
+				 src/lib_stl/makefile
+				 src/lib_stl/Test/makefile
 				 src/SRTMasc2bin/makefile
 				 ])
 AC_OUTPUT

@@ -1,7 +1,7 @@
 //
 // $Id$
-#ifndef POINTR3_INCLUDED_
-#define POINTR3_INCLUDED_
+#ifndef VECTOR3_INCLUDED_
+#define VECTOR3_INCLUDED_
 
 #include <iostream>
 #include <ostream>
@@ -14,7 +14,7 @@ namespace MartiniqueHM {
 //           CLASS VectoR3 : a vector in R3
 //
 //*********************************************************
-//! This hold a triplet of double. Mainly a storage class with write facilities
+//! This hold a triplet of float. Mainly a storage class with write facilities
 
 /*! A vector of R3 vectoriel space.
 */
@@ -24,24 +24,29 @@ public :
 	//! \name Constructors and destructors
 	//@{
 	//! void construct
-	VectoR3(double x=0., double y=0., double z=0.);
+	VectoR3(float x=0., float y=0., float z=0.);
 	//! void construct
-	VectoR3(const pointR3& A, const PointR3& B);
+	VectoR3(const PointR3& A, const PointR3& B);
 	//! Copy ctor
 	VectoR3(const VectoR3&);
 	//! Destructor
-	~VectoR3();
+	virtual ~VectoR3();
 	//@}
 
+	//! \name Vector operations
+	//@{
 	//! set vector length to 1
 	void Normalize();
+	//! cross product
+	friend VectoR3 Cross(const VectoR3& A, const VectoR3& B);
+	//@}
 
 	//! \name I/O, display and storage
 	//@{
 	//! Standard info function.
 	void info(std::ostream& s=std::cout, bool debug=false) const;
 	//@}
-	};
+};
 
 
 #include "vector3.inl"

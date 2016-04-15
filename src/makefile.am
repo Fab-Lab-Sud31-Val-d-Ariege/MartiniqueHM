@@ -11,7 +11,7 @@
 AUTOMAKE_OPTIONS = gnu
 # remember : need to finish the library before making applications
 # so the dot in the middle of the directory list
-SUBDIRS =  martiniquehm . SRTMasc2bin lib_geom
+SUBDIRS =  martiniquehm . SRTMasc2bin lib_geom lib_stl
 
 pkginclude_HEADERS = version.h
 
