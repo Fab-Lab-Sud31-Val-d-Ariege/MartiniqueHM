@@ -1,0 +1,8 @@
+#ifndef MARTINIQUEHM_VERSION_H__
+#define MARTINIQUEHM_VERSION_H__
+
+#define MARTINIQUEHM_VERSION "0.0.1"
+
+const char * MARTINIQUEHM_version;
+
+#endif /* MARTINIQUEHM_VERSION_H__ */
