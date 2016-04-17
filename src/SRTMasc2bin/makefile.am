@@ -9,17 +9,17 @@
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 AUTOMAKE_OPTIONS=gnu
 AM_CPPFLAGS=-I$(top_builddir) -I$(top_srcdir)/src
-EXTRA_DIST=strmasc2bin.ggo
+EXTRA_DIST=srtmasc2bin.ggo
 
 
-bin_PROGRAMS=strmasc2bin
-strmasc2bin_SOURCES=cmdline.h strmasc2bin.cpp strmasc2bin.h cmdline.c
-strmasc2bin_CFLAGS=-Wno-unused-but-set-variable
-strmasc2bin_LDADD=-lgslcblas -lgsl -lassabib
+bin_PROGRAMS=srtmasc2bin
+srtmasc2bin_SOURCES=cmdline.h srtmasc2bin.cpp srtmasc2bin.h cmdline.c
+srtmasc2bin_CFLAGS=-Wno-unused-but-set-variable
+srtmasc2bin_LDADD=-lgslcblas -lgsl -lm -lassabib
 
 
-cmdline.h: strmasc2bin.ggo
-	gengetopt --input=strmasc2bin.ggo --unamed-opts
+cmdline.h: srtmasc2bin.ggo
+	gengetopt --input=srtmasc2bin.ggo --unamed-opts
 
-cmdline.c: strmasc2bin.ggo
-	gengetopt --input=strmasc2bin.ggo --unamed-opts
+cmdline.c: srtmasc2bin.ggo
+	gengetopt --input=srtmasc2bin.ggo --unamed-opts

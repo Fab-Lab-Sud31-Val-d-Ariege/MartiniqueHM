@@ -1,7 +1,7 @@
 //
 // $Id$
 
-#include <strmasc2bin.h>
+#include <srtmasc2bin.h>
 #include <cmdline.h>
 
 gengetopt_args_info args_info;
@@ -96,14 +96,27 @@ int main (int argc, char* argv[])
 		}
 		// get line and keep cols wc to ec
 		getline(ind, line, '\n');
-
+		if(ind.fail()) break;
+		// warning : there is an extra field with a CR at the end of the line
+		if(!line.empty() && *line.rbegin() == '\r') {
+			line.erase( line.length()-1, 1);
+		}
+		// and an extra space
+		if(!line.empty() && *line.rbegin() == ' ') {
+			line.erase( line.length()-1, 1);
+		}
 		// analyse the line
 		csvl.split(line);
 		csvl.remove_empty();
-		if ( csvl.size() != ncols ) WATCH(csvl.size());
+		if ( csvl.size() < ncols ) {
+			WATCH(csvl.size());
+			WATCH(csvl[0]);
+			WATCH(csvl[ncols-2]);
+			WATCH(csvl[ncols-1]);
+		}
 
 		for (size_t jj = 0 ; jj < ncols ; ++jj ) {
-			long height = stod(csvl[jj]);
+			int16_t height = static_cast<int16_t>(stoi(csvl[jj]));
 			oud.write(reinterpret_cast<char*>(&height), sizeof(height));
 		}
 	}

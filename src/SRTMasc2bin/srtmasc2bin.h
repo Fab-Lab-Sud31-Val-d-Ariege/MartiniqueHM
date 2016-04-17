@@ -7,6 +7,7 @@
 #include <assabib/framic_defs.h>
 #include <fstream>
 #include <cmath>
+#include <cinttypes>
 #include <assabib/csvline.h>
 #include <assabib/FileName.h>
 

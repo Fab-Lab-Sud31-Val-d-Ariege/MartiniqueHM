@@ -95,7 +95,7 @@ class HMap
 	//! name of the map
 	string m_name;
 	//! storage area
-	valarray<double> m_v;
+	valarray<int16_t> m_v;
 	//! full size
 	size_t m_size;
 	//! nb of rows

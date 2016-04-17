@@ -1,5 +1,5 @@
 package "strmasc2bin"
-version "0.1.0"
+version "1.0.0"
 purpose "Read an ascii file of SRTM data and write a binary version. If no
 output name is given, will write foo.bin from foo.asc.
 Jarvis A., H.I. Reuter, A.  Nelson, E. Guevara, 2008, Hole-filled  seamless

@@ -88,7 +88,7 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-bin_PROGRAMS = strmasc2bin$(EXEEXT)
+bin_PROGRAMS = srtmasc2bin$(EXEEXT)
 subdir = src/SRTMasc2bin
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
@@ -104,10 +104,10 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_strmasc2bin_OBJECTS = strmasc2bin.$(OBJEXT) \
-	strmasc2bin-cmdline.$(OBJEXT)
-strmasc2bin_OBJECTS = $(am_strmasc2bin_OBJECTS)
-strmasc2bin_DEPENDENCIES =
+am_srtmasc2bin_OBJECTS = srtmasc2bin.$(OBJEXT) \
+	srtmasc2bin-cmdline.$(OBJEXT)
+srtmasc2bin_OBJECTS = $(am_srtmasc2bin_OBJECTS)
+srtmasc2bin_DEPENDENCIES =
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
@@ -164,8 +164,8 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(strmasc2bin_SOURCES)
-DIST_SOURCES = $(strmasc2bin_SOURCES)
+SOURCES = $(srtmasc2bin_SOURCES)
+DIST_SOURCES = $(srtmasc2bin_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -325,10 +325,10 @@ top_srcdir = @top_srcdir@
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 AUTOMAKE_OPTIONS = gnu
 AM_CPPFLAGS = -I$(top_builddir) -I$(top_srcdir)/src
-EXTRA_DIST = strmasc2bin.ggo
-strmasc2bin_SOURCES = cmdline.h strmasc2bin.cpp strmasc2bin.h cmdline.c
-strmasc2bin_CFLAGS = -Wno-unused-but-set-variable
-strmasc2bin_LDADD = -lgslcblas -lgsl -lassabib
+EXTRA_DIST = srtmasc2bin.ggo
+srtmasc2bin_SOURCES = cmdline.h srtmasc2bin.cpp srtmasc2bin.h cmdline.c
+srtmasc2bin_CFLAGS = -Wno-unused-but-set-variable
+srtmasc2bin_LDADD = -lgslcblas -lgsl -lm -lassabib
 all: all-am
 
 .SUFFIXES:
@@ -412,9 +412,9 @@ clean-binPROGRAMS:
 	echo " rm -f" $$list; \
 	rm -f $$list
 
-strmasc2bin$(EXEEXT): $(strmasc2bin_OBJECTS) $(strmasc2bin_DEPENDENCIES) $(EXTRA_strmasc2bin_DEPENDENCIES) 
-	@rm -f strmasc2bin$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(strmasc2bin_OBJECTS) $(strmasc2bin_LDADD) $(LIBS)
+srtmasc2bin$(EXEEXT): $(srtmasc2bin_OBJECTS) $(srtmasc2bin_DEPENDENCIES) $(EXTRA_srtmasc2bin_DEPENDENCIES) 
+	@rm -f srtmasc2bin$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(srtmasc2bin_OBJECTS) $(srtmasc2bin_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -422,8 +422,8 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/strmasc2bin-cmdline.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/strmasc2bin.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/srtmasc2bin-cmdline.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/srtmasc2bin.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -446,19 +446,19 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
 
-strmasc2bin-cmdline.o: cmdline.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(strmasc2bin_CFLAGS) $(CFLAGS) -MT strmasc2bin-cmdline.o -MD -MP -MF $(DEPDIR)/strmasc2bin-cmdline.Tpo -c -o strmasc2bin-cmdline.o `test -f 'cmdline.c' || echo '$(srcdir)/'`cmdline.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/strmasc2bin-cmdline.Tpo $(DEPDIR)/strmasc2bin-cmdline.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cmdline.c' object='strmasc2bin-cmdline.o' libtool=no @AMDEPBACKSLASH@
+srtmasc2bin-cmdline.o: cmdline.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(srtmasc2bin_CFLAGS) $(CFLAGS) -MT srtmasc2bin-cmdline.o -MD -MP -MF $(DEPDIR)/srtmasc2bin-cmdline.Tpo -c -o srtmasc2bin-cmdline.o `test -f 'cmdline.c' || echo '$(srcdir)/'`cmdline.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/srtmasc2bin-cmdline.Tpo $(DEPDIR)/srtmasc2bin-cmdline.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cmdline.c' object='srtmasc2bin-cmdline.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(strmasc2bin_CFLAGS) $(CFLAGS) -c -o strmasc2bin-cmdline.o `test -f 'cmdline.c' || echo '$(srcdir)/'`cmdline.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(srtmasc2bin_CFLAGS) $(CFLAGS) -c -o srtmasc2bin-cmdline.o `test -f 'cmdline.c' || echo '$(srcdir)/'`cmdline.c
 
-strmasc2bin-cmdline.obj: cmdline.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(strmasc2bin_CFLAGS) $(CFLAGS) -MT strmasc2bin-cmdline.obj -MD -MP -MF $(DEPDIR)/strmasc2bin-cmdline.Tpo -c -o strmasc2bin-cmdline.obj `if test -f 'cmdline.c'; then $(CYGPATH_W) 'cmdline.c'; else $(CYGPATH_W) '$(srcdir)/cmdline.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/strmasc2bin-cmdline.Tpo $(DEPDIR)/strmasc2bin-cmdline.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cmdline.c' object='strmasc2bin-cmdline.obj' libtool=no @AMDEPBACKSLASH@
+srtmasc2bin-cmdline.obj: cmdline.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(srtmasc2bin_CFLAGS) $(CFLAGS) -MT srtmasc2bin-cmdline.obj -MD -MP -MF $(DEPDIR)/srtmasc2bin-cmdline.Tpo -c -o srtmasc2bin-cmdline.obj `if test -f 'cmdline.c'; then $(CYGPATH_W) 'cmdline.c'; else $(CYGPATH_W) '$(srcdir)/cmdline.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/srtmasc2bin-cmdline.Tpo $(DEPDIR)/srtmasc2bin-cmdline.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cmdline.c' object='srtmasc2bin-cmdline.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(strmasc2bin_CFLAGS) $(CFLAGS) -c -o strmasc2bin-cmdline.obj `if test -f 'cmdline.c'; then $(CYGPATH_W) 'cmdline.c'; else $(CYGPATH_W) '$(srcdir)/cmdline.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(srtmasc2bin_CFLAGS) $(CFLAGS) -c -o srtmasc2bin-cmdline.obj `if test -f 'cmdline.c'; then $(CYGPATH_W) 'cmdline.c'; else $(CYGPATH_W) '$(srcdir)/cmdline.c'; fi`
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -695,11 +695,11 @@ uninstall-am: uninstall-binPROGRAMS
 .PRECIOUS: makefile
 
 
-cmdline.h: strmasc2bin.ggo
-	gengetopt --input=strmasc2bin.ggo --unamed-opts
+cmdline.h: srtmasc2bin.ggo
+	gengetopt --input=srtmasc2bin.ggo --unamed-opts
 
-cmdline.c: strmasc2bin.ggo
-	gengetopt --input=strmasc2bin.ggo --unamed-opts
+cmdline.c: srtmasc2bin.ggo
+	gengetopt --input=srtmasc2bin.ggo --unamed-opts
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
