@@ -1,0 +1,17 @@
+# Copyright (C) 2003-2007 ONERA Francis Micheli<micheli@onera.fr>
+#
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+AUTOMAKE_OPTIONS = gnu
+SUBDIRS= . Test
+AM_CPPFLAGS= -I$(top_builddir) -I$(top_srcdir)/src
+
+pkginclude_HEADERS = stl_triangle.h stl_triangle.inl stl_writer.h stl_writer.inl
+
+noinst_LTLIBRARIES = libstl.la
+libstl_la_SOURCES = stl_triangle.cpp stl_writer.cpp

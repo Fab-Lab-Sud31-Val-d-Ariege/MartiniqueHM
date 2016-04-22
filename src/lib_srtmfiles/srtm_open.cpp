@@ -1,0 +1,9 @@
+//
+// $Id$
+
+namespace MartiniqueHM {
+
+
+
+}
+
