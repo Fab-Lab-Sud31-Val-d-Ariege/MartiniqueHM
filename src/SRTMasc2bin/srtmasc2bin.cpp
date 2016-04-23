@@ -42,6 +42,9 @@ int main (int argc, char* argv[])
 		if(!oud) ERROPENF(oudfn.FullName().c_str());
 	}
 
+	// write magick
+	oud.write("SRTMfile binary ", 16);
+
 	// read and parse 6 first lines
 	string line;
 	// ncols         72010
@@ -82,7 +85,7 @@ int main (int argc, char* argv[])
 	// NODATA_value  -9999
 	getline(ind, line, '\n');
 	pos = line.find_last_of(' ');
-	long na = atol(&line.c_str()[++pos]);
+	int16_t na = atol(&line.c_str()[++pos]);
 	WATCH(na);
 	oud.write(reinterpret_cast<char*>(&na), sizeof(na));
 

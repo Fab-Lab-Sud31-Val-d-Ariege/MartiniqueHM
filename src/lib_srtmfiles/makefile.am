@@ -11,7 +11,7 @@ AUTOMAKE_OPTIONS = gnu
 SUBDIRS= . Test
 AM_CPPFLAGS= -I$(top_builddir) -I$(top_srcdir)/src
 
-pkginclude_HEADERS = stl_triangle.h stl_triangle.inl stl_writer.h stl_writer.inl
+pkginclude_HEADERS = srtm_files.h  srtm_files.inl
 
-noinst_LTLIBRARIES = libstl.la
-libstl_la_SOURCES = stl_triangle.cpp stl_writer.cpp
+noinst_LTLIBRARIES = libsrtmfiles.la
+libsrtmfiles_la_SOURCES = srtm_open.cpp

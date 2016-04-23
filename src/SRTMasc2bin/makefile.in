@@ -701,6 +701,10 @@ cmdline.h: srtmasc2bin.ggo
 cmdline.c: srtmasc2bin.ggo
 	gengetopt --input=srtmasc2bin.ggo --unamed-opts
 
+# ./srtmasc2bin /opt/Depot/SRTM/250/NE_ASCII/srtm_ne_250m.asc
+# ./srtmasc2bin /opt/Depot/SRTM/250/SE_ASCII/srtm_se_250m.asc
+# ./srtmasc2bin /opt/Depot/SRTM/250/W_ASCII/srtm_w_250m.asc
+
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

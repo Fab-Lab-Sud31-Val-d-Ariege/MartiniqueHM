@@ -83,6 +83,8 @@ AC_CONFIG_FILES([config/makefile
 				 src/lib_geom/Test/makefile
 				 src/lib_stl/makefile
 				 src/lib_stl/Test/makefile
+				 src/lib_srtmfiles/makefile
+				 src/lib_srtmfiles/Test/makefile
 				 src/SRTMasc2bin/makefile
 				 ])
 AC_OUTPUT

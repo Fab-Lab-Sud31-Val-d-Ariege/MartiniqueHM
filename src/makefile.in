@@ -347,7 +347,7 @@ top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = gnu
 # remember : need to finish the library before making applications
 # so the dot in the middle of the directory list
-SUBDIRS = martiniquehm . SRTMasc2bin lib_geom lib_stl
+SUBDIRS = martiniquehm . SRTMasc2bin lib_geom lib_stl lib_srtmfiles
 pkginclude_HEADERS = version.h
 
 # SUBLIBS = lib_Theodolite/libTheodolite.la

@@ -28,8 +28,9 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=0
+current_page=1
 FILE_NAME_0=0;Make;0;EUTF-8;1;1;0;%2Fhome%2Fframic%2FPgms%2FMartiniqueHM%2Fsrc%2Flib_geom%2FTest%2Fmakefile.am;0;4
+FILE_NAME_1=0;C;0;EUTF-8;1;1;0;%2Fhome%2Fframic%2FPgms%2FMartiniqueHM%2Fsrc%2Flib_srtmfiles%2Fsrtm_files.h;0;4
 
 [VTE]
 last_dir=/home/framic
