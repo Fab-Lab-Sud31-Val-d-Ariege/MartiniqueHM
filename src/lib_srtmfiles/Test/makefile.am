@@ -1,0 +1,20 @@
+# Copyright (C) 2003-2014 ONERA Francis Micheli<micheli@onera.fr>
+#
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+AUTOMAKE_OPTIONS = gnu
+AM_CPPFLAGS= -I$(top_builddir) -I$(top_srcdir)/src -I..
+
+EXTRA_DIST =
+
+check_PROGRAMS = tst250m
+
+tst250m_SOURCES = tst250m.cpp
+tst250m_LDADD = \
+	$(top_builddir)/src/lib_srtmfiles/libsrtmfiles.la \
+	-lgsl -lgslcblas -lm  -lassabib
