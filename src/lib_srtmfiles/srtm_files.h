@@ -45,8 +45,22 @@ namespace MartiniqueHM {
 		virtual void open(const assabib::FileName& fn) =0;
 		//! set the rectangle boundary
 		void SetLimits(double east, double north, double west, double south);
-		//! give next value in the rectangle
-		virtual int16_t Next() =0;
+		//! give current value in the rectangle
+		virtual int16_t Cur() =0;
+		//! go to next value in the rectangle
+		virtual bool Next() =0;
+		//! return number of rows in rectangle
+		size_t Rows() const;
+		//! return number of columns in rectangle
+		size_t Cols() const;
+		//! return X pos in degree (longitude), correct when used _before_ Next()
+		double XLon() const;
+		//! return Y pos in degree (latitude), correct when used _before_ Next()
+		double YLat() const;
+		//! return cell size (assumed cells are square)
+		double CellSize() const;
+		//! return true if next point is not NA
+		virtual bool IsValid() const =0;
 		//@}
 
 		//! \name I/O, display and storage (file SRTMFiles_IO.cpp)
@@ -63,15 +77,29 @@ namespace MartiniqueHM {
 		//! is the read pointer ready
 		bool m_ready;
 		//! seekg pointer
-		size_t m_seekg;
-		//! east limit
+		streampos m_seekg;
+		//! map west limit
+		double m_mapwest;
+		//! map north limit
+		double m_mapnorth;
+		//! ROI east limit
 		double m_east;
-		//! north limit
+		//! ROI north limit
 		double m_north;
-		//! west limit
+		//! ROI west limit
 		double m_west;
-		//! south limit
+		//! ROI south limit
 		double m_south;
+		//! nb of rows in rectangle ROI
+		size_t m_rr;
+		//! nb of columns in rectangle ROI
+		size_t m_cc;
+		//! index of current row in whole map
+		size_t m_ir;
+		//! index of current column in whole map
+		size_t m_ic;
+		//! cell size (square)
+		double m_cellsize;
 
 		//! go to first byte of interest, after setting boundaries
 		virtual void GoToStart() = 0;
@@ -92,8 +120,12 @@ namespace MartiniqueHM {
 		//@{
 		//! direct way, when the format is known ; mainly for debug
 		void open(const assabib::FileName& fn);
-		//! give next value in the rectangle
-		int16_t Next();
+		//! give current value in the rectangle
+		int16_t Cur();
+		//! go to next value in the rectangle
+		bool Next();
+		//! return true if next point is not NA
+		bool IsValid() const;
 		//@}
 
 		//! \name I/O, display and storage (file SRTMbin250m_IO.cpp)
@@ -113,14 +145,12 @@ namespace MartiniqueHM {
 			int16_t na;
 		} m_hd;
 
-		//! start of ROI (in bytes)
-		streampos m_start;
 		//! amount of byte to skip to go to next row
 		size_t m_stride;
 		//! buffer of size = nb cols
 		int16_t* m_rowbuff;
-		//! size of m_rowbuff
-		size_t m_cc;
+// 		//! size of m_rowbuff
+// 		size_t m_cc;
 		//! index in m_rowbuff
 		size_t m_ii;
 
