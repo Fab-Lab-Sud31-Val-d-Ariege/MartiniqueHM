@@ -28,9 +28,22 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=1
+current_page=6
 FILE_NAME_0=0;Make;0;EUTF-8;1;1;0;%2Fhome%2Fframic%2FPgms%2FMartiniqueHM%2Fsrc%2Flib_geom%2FTest%2Fmakefile.am;0;4
 FILE_NAME_1=0;C;0;EUTF-8;1;1;0;%2Fhome%2Fframic%2FPgms%2FMartiniqueHM%2Fsrc%2Flib_srtmfiles%2Fsrtm_files.h;0;4
+FILE_NAME_2=610;C++;0;EUTF-8;1;1;0;%2Fhome%2Fframic%2FPgms%2FMartiniqueHM%2Fsrc%2Flib_srtmfiles%2Fsrtm_files.inl;0;4
+FILE_NAME_3=0;C++;0;EUTF-8;1;1;0;%2Fhome%2Fframic%2FPgms%2FMartiniqueHM%2Fsrc%2Flib_srtmfiles%2Fsrtm_open.cpp;0;4
+FILE_NAME_4=0;Make;0;EUTF-8;1;1;0;%2Fhome%2Fframic%2FPgms%2FMartiniqueHM%2Fsrc%2Fmakefile.am;0;4
+FILE_NAME_5=0;Sh;0;EUTF-8;1;1;0;%2Fhome%2Fframic%2FPgms%2FMartiniqueHM%2Fconfigure.ac;0;4
+FILE_NAME_6=272;C++;0;EUTF-8;1;1;0;%2Fhome%2Fframic%2FPgms%2FMartiniqueHM%2Fsrc%2Flib_srtmfiles%2FTest%2Ftst250m.cpp;0;4
 
 [VTE]
 last_dir=/home/framic
+
+[prjorg]
+source_patterns=*.c;*.C;*.cpp;*.cxx;*.c++;*.cc;*.m;
+header_patterns=*.h;*.H;*.hpp;*.hxx;*.h++;*.hh;
+ignored_dirs_patterns=.*;CVS;
+ignored_file_patterns=*.o;*.obj;*.a;*.lib;*.so;*.dll;*.lo;*.la;*.class;*.jar;*.pyc;*.mo;*.gmo;
+generate_tag_prefs=0
+external_dirs=

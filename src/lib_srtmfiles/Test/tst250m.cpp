@@ -18,18 +18,13 @@ int main (int argc, char* argv[])
 	// output file
 	ofstream oud("roi.xyz");
 
-	size_t ll = s250.Rows()*s250.Cols();
-	for (size_t ii = 0 ; ii < ll ; ++ii ) {
-		WATCH(s250.XLon());
-		WATCH(s250.YLat());
+	while ( s250.Next() ) {
+// 		cout<<s250.XLon()<<' '<<s250.YLat()<<' '<<s250.ZCur()<<endl;
 		if ( s250.IsValid() ) {
-			oud<<s250.XLon()<<' '<<s250.YLat()<<' '<<s250.Next()<<'\n';
-		} else {
-			s250.Next();
+			oud<<s250.XLon()<<' '<<s250.YLat()<<' '<<s250.ZCur()<<'\n';
 		}
 	}
 	oud.close();
 
 	return 0;
 }
-

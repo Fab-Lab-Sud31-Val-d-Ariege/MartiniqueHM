@@ -46,16 +46,16 @@ namespace MartiniqueHM {
 		//! set the rectangle boundary
 		void SetLimits(double east, double north, double west, double south);
 		//! give current value in the rectangle
-		virtual int16_t Cur() =0;
+		virtual int16_t ZCur() const =0;
 		//! go to next value in the rectangle
 		virtual bool Next() =0;
-		//! return number of rows in rectangle
+		//! return number of rows in ROI
 		size_t Rows() const;
-		//! return number of columns in rectangle
+		//! return number of columns in ROI
 		size_t Cols() const;
-		//! return X pos in degree (longitude), correct when used _before_ Next()
+		//! return X pos in degree (longitude)
 		double XLon() const;
-		//! return Y pos in degree (latitude), correct when used _before_ Next()
+		//! return Y pos in degree (latitude)
 		double YLat() const;
 		//! return cell size (assumed cells are square)
 		double CellSize() const;
@@ -94,10 +94,14 @@ namespace MartiniqueHM {
 		size_t m_rr;
 		//! nb of columns in rectangle ROI
 		size_t m_cc;
-		//! index of current row in whole map
+		//! index of current row in ROI
 		size_t m_ir;
-		//! index of current column in whole map
+		//! index of current column in ROI
 		size_t m_ic;
+		//! index of first ROI row in whole map
+		size_t m_irmap;
+		//! index of first ROI column in whole map
+		size_t m_icmap;
 		//! cell size (square)
 		double m_cellsize;
 
@@ -121,7 +125,7 @@ namespace MartiniqueHM {
 		//! direct way, when the format is known ; mainly for debug
 		void open(const assabib::FileName& fn);
 		//! give current value in the rectangle
-		int16_t Cur();
+		int16_t ZCur() const;
 		//! go to next value in the rectangle
 		bool Next();
 		//! return true if next point is not NA
@@ -149,10 +153,6 @@ namespace MartiniqueHM {
 		size_t m_stride;
 		//! buffer of size = nb cols
 		int16_t* m_rowbuff;
-// 		//! size of m_rowbuff
-// 		size_t m_cc;
-		//! index in m_rowbuff
-		size_t m_ii;
 
 		//! go to first byte of interest, after setting boundaries
 		void GoToStart();

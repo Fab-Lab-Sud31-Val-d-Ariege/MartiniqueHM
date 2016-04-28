@@ -1,0 +1,30 @@
+solid tetra-ascii.stl
+  facet normal 0.816498 0 0.577349
+    outer loop
+      vertex 1 0 -0.70711
+      vertex 0 1 0.70711
+      vertex 0 -1 0.70711
+    endloop
+  endfacet
+  facet normal -0.816498 0 0.577349
+    outer loop
+      vertex 0 1 0.70711
+      vertex -1 0 -0.70711
+      vertex 0 -1 0.70711
+    endloop
+  endfacet
+  facet normal 0 0.816498 -0.577349
+    outer loop
+      vertex 1 0 -0.70711
+      vertex -1 0 -0.70711
+      vertex 0 1 0.70711
+    endloop
+  endfacet
+  facet normal -0 -0.816498 -0.577349
+    outer loop
+      vertex 1 0 -0.70711
+      vertex 0 -1 0.70711
+      vertex -1 0 -0.70711
+    endloop
+  endfacet
+endsolid tetra-ascii.stl
