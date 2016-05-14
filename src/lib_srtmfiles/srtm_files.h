@@ -6,7 +6,7 @@
 #include <string>
 #include <fstream>
 #include <cstdint>
-#include <assabib/framic_defs.h>
+#include <common.h>
 #include <assabib/FileName.h>
 
 // to be sure double are 64 bits long

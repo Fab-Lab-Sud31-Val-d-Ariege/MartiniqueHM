@@ -1,7 +1,7 @@
 //
 // $Id$
 
-#include <assabib/framic_defs.h>
+#include <common.h>
 #include <martiniquehm/stl_triangle.h>
 #include <martiniquehm/stl_writer.h>
 

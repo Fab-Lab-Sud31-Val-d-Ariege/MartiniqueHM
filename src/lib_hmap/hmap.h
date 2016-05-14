@@ -3,7 +3,7 @@
 #ifndef HMAP_INCLUDED_
 #define HMAP_INCLUDED_
 
-#include <assabib/framic_defs.h>
+#include <common.h>
 #include <string>
 #include <vector>
 #include <valarray>

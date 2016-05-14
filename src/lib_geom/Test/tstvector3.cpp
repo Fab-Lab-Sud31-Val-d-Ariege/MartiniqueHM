@@ -1,7 +1,7 @@
 //
 // $Id$
 
-#include <assabib/framic_defs.h>
+#include <common.h>
 #include <martiniquehm/vector3.h>
 
 using namespace MartiniqueHM;
