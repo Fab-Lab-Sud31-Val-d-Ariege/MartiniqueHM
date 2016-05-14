@@ -49,7 +49,7 @@ class HMap
 	double& sqsize();
 	//! ref value for NA data
 	double& NA();
-	//! value of the bottom for a manifole STL
+	//! value of the bottom for a manifold STL
 	double& bottom();
 
 	//! 2d access, indexes start at 0
@@ -81,14 +81,6 @@ class HMap
 	string& name();
 	//! Standard info function.
     void info(ostream& s=cout, bool debug=false) const;
-// 	//! write data in XML format ; parameters only, not the map!
-//     void write(ostream& out) const;
-//     //! write header of XSIL format
-//     void writeXML_Head(ostream& out) const;
-//     //! write data in XSIL format (section doubleable)
-//     void writeXML_Data(ostream& out) const;
-//     //! write footer of XSIL format
-//     void writeXML_Foot(ostream& out) const;
     //@}
 
   private :
